@@ -1,11 +1,22 @@
-﻿using ScreenSound.Banco;
+﻿using Microsoft.SqlServer.Server;
+using System.Runtime.Intrinsics.X86;
+using System.Text.RegularExpressions;
+using ScreenSound.Banco;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
-
 try
 {
-    var connection = new Connection();
-    var listaArtista = connection.Listar();
+    var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
+
+    var novoArtista = new Artista("Gilberto Gil", "Dono do mundo universo") {Id = 1002 };
+    //artistaDAL.Adicionar(novoArtista);
+    artistaDAL.Atualizar(novoArtista);
+    artistaDAL.Deletar(novoArtista);
+
+
+
+    var listaArtista = artistaDAL.Listar();
  
     foreach ( var artista in listaArtista)
     {

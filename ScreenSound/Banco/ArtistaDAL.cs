@@ -8,7 +8,7 @@ using ScreenSound.Modelos;
 
 namespace ScreenSound.Banco
 {
-    internal class ArtistaDAL
+    internal class ArtistaDAL: DAL
     {
 
         private readonly ScreenSoundContext context;
